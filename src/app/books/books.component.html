@@ -1,7 +1,7 @@
 <p>books works!</p>
 
 <ul [(ngModel)]="selectedBook">
-    <li *ngFor="let book of books">{{book.title}} | 
+    <li *ngFor="let book of books"> ID: {{book.id}} | {{book.title}} | 
         <button (click)="deleteBook(book.id)">delete</button>
         <button (click)="updateBook(book.id)">update</button>
     </li>

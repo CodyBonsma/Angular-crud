@@ -21,27 +21,23 @@ export class BooksComponent implements OnInit {
     this.showUpdate = false;
   }
 
+  // run this code when the line starts
   ngOnInit(): void {
     this.bookService.getBookInfo().subscribe(payload => {
-      console.log("This is the books payload: ", payload);
       this.books = payload;
     })
   }
 
   // delete functionality
   deleteBook(id: number){
-    console.log("this is the book ID:", id)
     this.bookService.deleteBook(id).subscribe(() => {
-     console.log('deletion successfull');
      this.ngOnInit();
     })
   }
 
   // create a new book
   createBook(data: string){
-    console.log("this is the data:", data);
     this.bookService.createBook({title: data}).subscribe(() => {
-      console.log('successfully added book');
       this.titleInput = '';
       this.ngOnInit();
     })
@@ -51,15 +47,13 @@ export class BooksComponent implements OnInit {
   updateBook(id: number){
       this.showUpdate = true;
       this.bookService.getBookById(id).subscribe(payload=> {
-        console.log("this is the single book:", payload)
         this.updateInput = payload;
       });
 
       this.bookService.updateBook(id, this.updateInput).subscribe(() => {
-        console.log('successfully updated this title');
         this.ngOnInit();
         // this.showUpdate = false;
-      })
+      });
     }
  
 
