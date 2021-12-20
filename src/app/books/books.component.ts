@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
+// import { Book } from '../books.model'
 
 @Component({
   selector: 'app-books',
@@ -13,6 +14,8 @@ export class BooksComponent implements OnInit {
   books: any = [];
   selectedBook: any = '';
   titleInput: string = '';
+  authorInput: string = '';
+  descriptionInput: string = '';
   showUpdate: boolean = false;
   updateInput: any = '';
 
@@ -24,7 +27,9 @@ export class BooksComponent implements OnInit {
   // run this code when the line starts
   ngOnInit(): void {
     this.bookService.getBookInfo().subscribe(payload => {
+      console.log("This is the construct", payload)
       this.books = payload;
+      // this.showUpdate = false;
     })
   }
 
@@ -36,9 +41,19 @@ export class BooksComponent implements OnInit {
   }
 
   // create a new book
-  createBook(data: string){
-    this.bookService.createBook({title: data}).subscribe(() => {
+  createBook(data: any){
+    console.log("DATA:", data)
+    this.bookService.createBook(
+      {
+        title: data.title, 
+        author: data.author, 
+        description: data.description
+      }
+      ).subscribe(() => {
+         console.log("success in creating new book")
       this.titleInput = '';
+      this.authorInput = '';
+      this.descriptionInput = '';
       this.ngOnInit();
     })
   }
@@ -47,14 +62,13 @@ export class BooksComponent implements OnInit {
   updateBook(id: number){
       this.showUpdate = true;
       this.bookService.getBookById(id).subscribe(payload=> {
+        console.log("THA PAYLOAD", payload)
         this.updateInput = payload;
       });
 
       this.bookService.updateBook(id, this.updateInput).subscribe(() => {
         this.ngOnInit();
-        // this.showUpdate = false;
       });
     }
  
-
 }

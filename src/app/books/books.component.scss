@@ -18,10 +18,35 @@ td, th {
     z-index: 1;
     width: 300px;
     height: 250px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
     background-color: aquamarine;
     border: 1px solid black;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookContainer{
+    width: 400px;
+    margin: 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.newBookContainer {
+    border: 1px solid black;
+    text-align: center;
+    margin: 7px;
+    justify-content: space-between;
+}
+
+input, textarea {
+    margin: 2px;
 }

@@ -1,22 +1,36 @@
-<p>books works!</p>
-
-<ul [(ngModel)]="selectedBook">
-    <li *ngFor="let book of books"> ID: {{book.id}} | {{book.title}} | 
-        <button (click)="deleteBook(book.id)">delete</button>
-        <button (click)="updateBook(book.id)">update</button>
-    </li>
-</ul>
-
-<div>
+<div class="newBookContainer">
     <h2>Add book to list</h2>
     <hr/>
     <input placeholder="add book title" [(ngModel)]="titleInput">
-    <button (click)="createBook(titleInput)">create</button>
+    <input placeholder="add author" [(ngModel)]="authorInput">
+    <form>
+        <textarea rows="5" cols='40' name="description" spellcheck="false" [(ngModel)]="descriptionInput" placeholder="book description">
+            Enter a book description here
+        </textarea>
+        </form>
+
+    <button (click)="createBook({title: titleInput, author: authorInput, description: descriptionInput})">create</button>
 </div>
 
 <div class="updateWindow" *ngIf="showUpdate" >
-    <input [(ngModel)]="updateInput.title" >
+    <input placeholder="edit title" [(ngModel)]="updateInput.title" >
+    <input placeholder="edit author" [(ngModel)]="updateInput.author">
+    <textarea [(ngModel)]="updateInput.description"> </textarea>
     <button (click)="updateBook(updateInput.id)">update</button>
     <button (click)="closeWindow()">close</button>
 </div>
+
+<div [(ngModel)]="selectedBook" class="mainContainer">
+    <div *ngFor="let book of books" class="bookContainer">
+        <h3>{{book.title}}</h3>
+        <hr/>
+        <p>Author: <b>{{book.author}}</b> </p>
+        <p>{{book.description}}</p>
+        <button (click)="deleteBook(book.id)">delete</button>
+        <button (click)="updateBook(book.id)">update</button>
+    </div>
+</div>
+
+
+
 
