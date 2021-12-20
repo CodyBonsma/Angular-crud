@@ -1,0 +1,26 @@
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.books-table {
+border: 1px solid black;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+.updateWindow {
+    z-index: 999;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    border: 1px solid black;
+}

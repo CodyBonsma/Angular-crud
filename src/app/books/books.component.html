@@ -1,0 +1,22 @@
+<p>books works!</p>
+
+<ul [(ngModel)]="selectedBook">
+    <li *ngFor="let book of books">{{book.title}} | 
+        <button (click)="deleteBook(book.id)">delete</button>
+        <button (click)="updateBook(book.id)">update</button>
+    </li>
+</ul>
+
+<div>
+    <h2>Add book to list</h2>
+    <hr/>
+    <input placeholder="add book title" [(ngModel)]="titleInput">
+    <button (click)="createBook(titleInput)">create</button>
+</div>
+
+<div class="updateWindow" *ngIf="showUpdate" >
+    <input [(ngModel)]="updateInput.title" >
+    <button (click)="updateBook(updateInput.id)">update</button>
+    <button (click)="closeWindow()">close</button>
+</div>
+
