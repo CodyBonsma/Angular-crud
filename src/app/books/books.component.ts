@@ -43,19 +43,24 @@ export class BooksComponent implements OnInit {
   // create a new book
   createBook(data: any){
     console.log("DATA:", data)
-    this.bookService.createBook(
-      {
-        title: data.title, 
-        author: data.author, 
-        description: data.description
-      }
-      ).subscribe(() => {
-         console.log("success in creating new book")
-      this.titleInput = '';
-      this.authorInput = '';
-      this.descriptionInput = '';
-      this.ngOnInit();
-    })
+    if(data.title === '' || data.author === '' || data.description ===''){
+      alert('Please fill out all fields before adding your book')
+    } else {
+      this.bookService.createBook(
+        {
+          title: data.title, 
+          author: data.author, 
+          description: data.description
+        }
+        ).subscribe(() => {
+           console.log("success in creating new book")
+        this.titleInput = '';
+        this.authorInput = '';
+        this.descriptionInput = '';
+        this.ngOnInit();
+      })
+    }
+    
   }
 
   // update an existing book
