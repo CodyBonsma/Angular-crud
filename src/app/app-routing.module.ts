@@ -4,6 +4,8 @@ import { BooksComponent } from './books/books.component';
 
 const routes: Routes = [
   {path: 'books', component: BooksComponent},
+  {path: '', redirectTo: "books", pathMatch: 'full'}
+
 ];
 
 @NgModule({
