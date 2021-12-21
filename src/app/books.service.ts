@@ -18,7 +18,6 @@ export class BooksService {
   }
 
   createBook(data: Object){
-    console.log("BACK END DATA", data)
     return this.http.post('http://localhost:8082/api/books', data);
   }
   getBookById(id: number){
